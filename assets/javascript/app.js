@@ -81,7 +81,7 @@ trainData.on("child_added", function(childSnapshot, prevChildKey){
 	console.log("ARRIVAL TIME: " + moment(nextTrain).format("HH:mm"));
 
 	//add each trains data into the table
-	$("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + nextTrainConverted + "</td><td>" + tMinutesTillTrain + "</td></tr>");
+	$("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + "Every " + frequency + " minutes" + "</td><td>" + nextTrainConverted + "</td><td>" + tMinutesTillTrain + "</td></tr>");
 
 });
 
