@@ -21,10 +21,10 @@ $('#submitButton').on('click', function(){
 	trainData.push(newTrains);
 
 	//logs everything to the console
-	console.log(newTrains.name);
-	console.log(newTrains.tdestination);
-	console.log(newTrains.tFirst);
-	console.log(newTrains.tfreq);
+	// console.log(newTrains.name);
+	// console.log(newTrains.tdestination);
+	// console.log(newTrains.tFirst);
+	// console.log(newTrains.tfreq);
 
 	//alert
 	alert("Train successfully added!");
@@ -41,7 +41,7 @@ $('#submitButton').on('click', function(){
 //when a new item is added (child) do this function
 trainData.on("child_added", function(childSnapshot, prevChildKey){
 
-	console.log(childSnapshot.val());
+	// console.log(childSnapshot.val());
 
 	//store everything into a variable
 	var trainName = childSnapshot.val().name;
@@ -50,35 +50,35 @@ trainData.on("child_added", function(childSnapshot, prevChildKey){
 	var frequency = childSnapshot.val().tfreq;
 
 	//train info
-	console.log(trainName);
-	console.log(destination);
-	console.log(firstTime);
-	console.log(frequency);
+	// console.log(trainName);
+	// console.log(destination);
+	// console.log(firstTime);
+	// console.log(frequency);
 
 	//convert first time (push back 1 year to make sure it comes before current time)
 	var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
-	console.log(firstTimeConverted);
+	// console.log(firstTimeConverted);
 
 	//current time
 	var currentTime = moment();
-	console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
+	// console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
 
 	//difference between the times
 	var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-	console.log("DIFFERENCE IN TIME: " + diffTime);
+	// console.log("DIFFERENCE IN TIME: " + diffTime);
 
 	//time apart (remainder)
 	var tRemainder = diffTime % frequency;
-	console.log(tRemainder);
+	// console.log(tRemainder);
 
 	//minute until train
 	var tMinutesTillTrain = frequency - tRemainder;
-	console.log("MINUTES TIL TRAIN: " + tMinutesTillTrain);
+	// console.log("MINUTES TIL TRAIN: " + tMinutesTillTrain);
 
 	//next train
 	var nextTrain = moment().add(tMinutesTillTrain, "minutes");
 	var nextTrainConverted = moment(nextTrain).format("hh:mm a");
-	console.log("ARRIVAL TIME: " + moment(nextTrain).format("HH:mm"));
+	// console.log("ARRIVAL TIME: " + moment(nextTrain).format("HH:mm"));
 
 	//add each trains data into the table
 	$("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + "Every " + frequency + " minutes" + "</td><td>" + nextTrainConverted + "</td><td>" + tMinutesTillTrain + "</td></tr>");
